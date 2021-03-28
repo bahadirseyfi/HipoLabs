@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1845AADE2610D07200E00899 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1845AADD2610D07200E00899 /* UIViewControllerExtension.swift */; };
+		18BC6604261138710070046E /* AddMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BC6603261138710070046E /* AddMemberViewController.swift */; };
 		18D5D9BE260FA450003B455C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D5D9BD260FA450003B455C /* AppDelegate.swift */; };
 		18D5D9C0260FA450003B455C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D5D9BF260FA450003B455C /* SceneDelegate.swift */; };
 		18D5D9C5260FA450003B455C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18D5D9C3260FA450003B455C /* Main.storyboard */; };
@@ -41,6 +42,7 @@
 
 /* Begin PBXFileReference section */
 		1845AADD2610D07200E00899 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		18BC6603261138710070046E /* AddMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberViewController.swift; sourceTree = "<group>"; };
 		18D5D9BA260FA450003B455C /* HipoLabs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HipoLabs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D5D9BD260FA450003B455C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		18D5D9BF260FA450003B455C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				18D5D9F4260FA4F4003B455C /* SplashScreenViewController.swift */,
 				18D5D9FC260FA517003B455C /* HomeViewController.swift */,
 				18D5DA01260FAD08003B455C /* DetailViewController.swift */,
+				18BC6603261138710070046E /* AddMemberViewController.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				18D5D9BE260FA450003B455C /* AppDelegate.swift in Sources */,
 				18D5DA08260FBBA7003B455C /* MembersCell.swift in Sources */,
 				18D5D9C0260FA450003B455C /* SceneDelegate.swift in Sources */,
+				18BC6604261138710070046E /* AddMemberViewController.swift in Sources */,
 				18D5DA02260FAD08003B455C /* DetailViewController.swift in Sources */,
 				1845AADE2610D07200E00899 /* UIViewControllerExtension.swift in Sources */,
 				18D5DA11260FC051003B455C /* UIViewExtension.swift in Sources */,
@@ -483,6 +487,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A6TXNR8TL5;
 				INFOPLIST_FILE = HipoLabs/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -502,6 +507,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A6TXNR8TL5;
 				INFOPLIST_FILE = HipoLabs/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

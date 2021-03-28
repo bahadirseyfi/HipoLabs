@@ -14,7 +14,7 @@ class SplashScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Hipo"
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -23,20 +23,24 @@ class SplashScreenViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        createLabels()
+    }
+    
+    func createLabels(){
         hipoLabel.text = ""
         labsLabel.text = ""
         
         let hipoLabel = "HIPO"
         let labsLabel = "Labs"
+        defer {
+            textLoader(text: labsLabel, time: 0.2, label: self.labsLabel)
+        }
         
         textLoader(text: hipoLabel, time: 0.4, label: self.hipoLabel)
-        textLoader(text: labsLabel, time: 0.2, label: self.labsLabel)
-        
     }
     
     private func redirectToHome() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 10, execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5, execute: {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)
             let vc = storyboard.instantiateViewController(withIdentifier: "HomeViewController") as! HomeViewController
             vc.modalPresentationStyle = .fullScreen
