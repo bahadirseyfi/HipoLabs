@@ -7,7 +7,17 @@
 
 import UIKit
 
+protocol AddMemberDelegate: AnyObject {
+    func reload(member: Member)
+}
+
+
 class AddMemberViewController: UIViewController, UITextFieldDelegate {
+    
+    
+    private var interactor: HomeViewInteractor = HomeViewInteractor()
+    
+    weak var delegate: AddMemberDelegate?
 
     // Mark: - Properties
     @IBOutlet weak var nameTextField: UITextField!
@@ -23,8 +33,7 @@ class AddMemberViewController: UIViewController, UITextFieldDelegate {
         
         toNextTextfield()
         hideKeyboard()
-        
-        
+
     }
     
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
@@ -40,6 +49,47 @@ class AddMemberViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func backBtn(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
+    @IBAction func addMmbrButton(_ sender: UIButton) {
+        
+     //   let viewController = HomeViewController.instantiateViewController(with: "HomeViewController")
+        
+      //  interactor.fetchModel()
+        let new = createMember()
+       // interactor.membersModel?.members?.append(new)
+       // print("YENİ SAYISIIII !!!", interactor.membersModel?.members![4].name)
+      
+        // TABLE VİEW RELOAD ETMEK !!!!!!
+         //   viewController.tableView.reloadData()
+    
+       
+        self.dismiss(animated: true) { [weak self] in
+            self?.delegate?.reload(member: new)
+        }
+        
+    }
+    func createMember()->Member{
+        let createMem = Member()
+        
+        if let nameLabel = nameTextField.text, let surnameLabel = surnameTextField.text {
+            createMem.name = nameLabel + " " + surnameLabel
+        }
+        if let age = ageTextField.text {
+            createMem.age = Int(age)
+        }
+        if let yearHipo = yearsLabel.text {
+            createMem.hipo?.years_in_hipo = Int(yearHipo)
+        }
+        
+        createMem.location = locationTextField.text
+  
+        createMem.github = githubTextField.text
+        
+       // createMem.hipo?.years_in_hipo =
+        return createMem
     }
     
     

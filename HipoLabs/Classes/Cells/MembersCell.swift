@@ -9,6 +9,8 @@ import UIKit
 
 class MembersCell: UITableViewCell {
 
+    @IBOutlet weak var nameLabel: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -18,6 +20,10 @@ class MembersCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
+    }
+    
+    func setupUI(for member: Member){
+        nameLabel.text = member.name
     }
 
 }

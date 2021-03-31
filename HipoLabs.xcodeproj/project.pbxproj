@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18253FBB26127EB40003A4EC /* HomeViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18253FBA26127EB40003A4EC /* HomeViewInteractor.swift */; };
 		1845AADE2610D07200E00899 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1845AADD2610D07200E00899 /* UIViewControllerExtension.swift */; };
+		18647E9E26133E6E00469DCA /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18647E9D26133E6E00469DCA /* Service.swift */; };
+		18647EA62614AFE900469DCA /* GitHubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18647EA52614AFE900469DCA /* GitHubViewController.swift */; };
 		18BC6604261138710070046E /* AddMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BC6603261138710070046E /* AddMemberViewController.swift */; };
 		18D5D9BE260FA450003B455C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D5D9BD260FA450003B455C /* AppDelegate.swift */; };
 		18D5D9C0260FA450003B455C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D5D9BF260FA450003B455C /* SceneDelegate.swift */; };
@@ -21,6 +24,8 @@
 		18D5DA02260FAD08003B455C /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D5DA01260FAD08003B455C /* DetailViewController.swift */; };
 		18D5DA08260FBBA7003B455C /* MembersCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D5DA07260FBBA7003B455C /* MembersCell.swift */; };
 		18D5DA11260FC051003B455C /* UIViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D5DA10260FC051003B455C /* UIViewExtension.swift */; };
+		18E435172611F22F0085AB13 /* MembersModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18E435162611F22F0085AB13 /* MembersModel.swift */; };
+		18E4351C2611F34D0085AB13 /* hipo.json in Resources */ = {isa = PBXBuildFile; fileRef = 18E4351B2611F34D0085AB13 /* hipo.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,7 +46,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		18253FBA26127EB40003A4EC /* HomeViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewInteractor.swift; sourceTree = "<group>"; };
 		1845AADD2610D07200E00899 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		18647E9D26133E6E00469DCA /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		18647EA52614AFE900469DCA /* GitHubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubViewController.swift; sourceTree = "<group>"; };
 		18BC6603261138710070046E /* AddMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberViewController.swift; sourceTree = "<group>"; };
 		18D5D9BA260FA450003B455C /* HipoLabs.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HipoLabs.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18D5D9BD260FA450003B455C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -61,6 +69,8 @@
 		18D5DA01260FAD08003B455C /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		18D5DA07260FBBA7003B455C /* MembersCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersCell.swift; sourceTree = "<group>"; };
 		18D5DA10260FC051003B455C /* UIViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewExtension.swift; sourceTree = "<group>"; };
+		18E435162611F22F0085AB13 /* MembersModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MembersModel.swift; sourceTree = "<group>"; };
+		18E4351B2611F34D0085AB13 /* hipo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = hipo.json; path = ../../../hipo.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +98,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		18647E9426133E4B00469DCA /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				18647E9D26133E6E00469DCA /* Service.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		18D5D9B1260FA450003B455C = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +129,8 @@
 		18D5D9BC260FA450003B455C /* HipoLabs */ = {
 			isa = PBXGroup;
 			children = (
+				18647E9426133E4B00469DCA /* Services */,
+				18E435152611F2180085AB13 /* Models */,
 				18D5DA0F260FC03E003B455C /* Extensions */,
 				18D5D9F3260FA4E0003B455C /* Classes */,
 				18D5D9BD260FA450003B455C /* AppDelegate.swift */,
@@ -119,6 +139,7 @@
 				18D5D9C6260FA450003B455C /* Assets.xcassets */,
 				18D5D9C8260FA450003B455C /* LaunchScreen.storyboard */,
 				18D5D9CB260FA450003B455C /* Info.plist */,
+				18E4351B2611F34D0085AB13 /* hipo.json */,
 			);
 			path = HipoLabs;
 			sourceTree = "<group>";
@@ -146,9 +167,11 @@
 			children = (
 				18D5DA06260FBB88003B455C /* Cells */,
 				18D5D9F4260FA4F4003B455C /* SplashScreenViewController.swift */,
+				18253FBA26127EB40003A4EC /* HomeViewInteractor.swift */,
 				18D5D9FC260FA517003B455C /* HomeViewController.swift */,
 				18D5DA01260FAD08003B455C /* DetailViewController.swift */,
 				18BC6603261138710070046E /* AddMemberViewController.swift */,
+				18647EA52614AFE900469DCA /* GitHubViewController.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -168,6 +191,14 @@
 				1845AADD2610D07200E00899 /* UIViewControllerExtension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		18E435152611F2180085AB13 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				18E435162611F22F0085AB13 /* MembersModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				18D5D9CA260FA450003B455C /* LaunchScreen.storyboard in Resources */,
+				18E4351C2611F34D0085AB13 /* hipo.json in Resources */,
 				18D5D9C7260FA450003B455C /* Assets.xcassets in Resources */,
 				18D5D9C5260FA450003B455C /* Main.storyboard in Resources */,
 			);
@@ -302,9 +334,13 @@
 			files = (
 				18D5D9BE260FA450003B455C /* AppDelegate.swift in Sources */,
 				18D5DA08260FBBA7003B455C /* MembersCell.swift in Sources */,
+				18647EA62614AFE900469DCA /* GitHubViewController.swift in Sources */,
+				18253FBB26127EB40003A4EC /* HomeViewInteractor.swift in Sources */,
 				18D5D9C0260FA450003B455C /* SceneDelegate.swift in Sources */,
 				18BC6604261138710070046E /* AddMemberViewController.swift in Sources */,
+				18647E9E26133E6E00469DCA /* Service.swift in Sources */,
 				18D5DA02260FAD08003B455C /* DetailViewController.swift in Sources */,
+				18E435172611F22F0085AB13 /* MembersModel.swift in Sources */,
 				1845AADE2610D07200E00899 /* UIViewControllerExtension.swift in Sources */,
 				18D5DA11260FC051003B455C /* UIViewExtension.swift in Sources */,
 				18D5D9F5260FA4F4003B455C /* SplashScreenViewController.swift in Sources */,

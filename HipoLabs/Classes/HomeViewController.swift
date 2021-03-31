@@ -7,58 +7,69 @@
 
 import UIKit
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, AddMemberDelegate {
+    
+    // PROTOKOL --------------------
+    
+    func reload(member: Member) {
+        interactor.membersModel?.members?.append(member)
+        self.loadData()
+    }
+    
+    func loadData(){
+        tableView.reloadData()
+    }
  
-    let array = ["ali","selami","zafer","mehmet"]
-
+    // -------------------------------
+    
+    private var interactor: HomeViewInteractor = HomeViewInteractor()
+    
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         tableView.dataSource = self
         tableView.delegate = self
-        
+        interactor.fetchModel()
     }
     
-    
-    private func redirectTo(to name: String) {
+    private func redirectTo(member: Member) {
         
         self.view.endEditing(true)
-    
         let viewController = DetailViewController.instantiateViewController(with: "DetailViewController")
-    
-        viewController.initName = name
-      //  self.performSegue(withIdentifier: "toDetail", sender: self)
+        viewController.initialize(with: member)
         viewController.modalPresentationStyle = .fullScreen
         self.showDetailViewController(viewController, sender: nil)
-        
-        
     }
-
     
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        4
+         return (interactor.membersModel?.members?.count)! // ! -------
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MembersCell") as! MembersCell
-        return cell
+        let member = interactor.membersModel?.members![indexPath.row]
+        cell.setupUI(for: member!) // ! ---------
+            return cell
+       
     }
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         60
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print(indexPath.row)
-        let index = array[indexPath.row]
-        redirectTo(to: index)
+
+        guard let memberModel = interactor.membersModel else { return }
         
+        //--------- ! -------
+        let memo = memberModel.members![indexPath.row]
+        redirectTo(member: memo)
         
-        
+   
     }
     func numberOfSections(in tableView: UITableView) -> Int {
         1
