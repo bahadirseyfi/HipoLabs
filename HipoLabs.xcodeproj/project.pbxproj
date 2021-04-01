@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		18253FBB26127EB40003A4EC /* HomeViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18253FBA26127EB40003A4EC /* HomeViewInteractor.swift */; };
 		1845AADE2610D07200E00899 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1845AADD2610D07200E00899 /* UIViewControllerExtension.swift */; };
+		1846B759261651C900C3BD1B /* DetailViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1846B758261651C900C3BD1B /* DetailViewInteractor.swift */; };
 		18647E9E26133E6E00469DCA /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18647E9D26133E6E00469DCA /* Service.swift */; };
 		18647EA62614AFE900469DCA /* GitHubViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18647EA52614AFE900469DCA /* GitHubViewController.swift */; };
 		18BC6604261138710070046E /* AddMemberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18BC6603261138710070046E /* AddMemberViewController.swift */; };
@@ -48,6 +49,7 @@
 /* Begin PBXFileReference section */
 		18253FBA26127EB40003A4EC /* HomeViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewInteractor.swift; sourceTree = "<group>"; };
 		1845AADD2610D07200E00899 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		1846B758261651C900C3BD1B /* DetailViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewInteractor.swift; sourceTree = "<group>"; };
 		18647E9D26133E6E00469DCA /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		18647EA52614AFE900469DCA /* GitHubViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GitHubViewController.swift; sourceTree = "<group>"; };
 		18BC6603261138710070046E /* AddMemberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMemberViewController.swift; sourceTree = "<group>"; };
@@ -106,6 +108,23 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		18BBD3402616633300CF6759 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				18D5D9C8260FA450003B455C /* LaunchScreen.storyboard */,
+				18D5D9CB260FA450003B455C /* Info.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		18BBD3412616635A00CF6759 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				18D5D9C6260FA450003B455C /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		18D5D9B1260FA450003B455C = {
 			isa = PBXGroup;
 			children = (
@@ -129,17 +148,16 @@
 		18D5D9BC260FA450003B455C /* HipoLabs */ = {
 			isa = PBXGroup;
 			children = (
-				18647E9426133E4B00469DCA /* Services */,
-				18E435152611F2180085AB13 /* Models */,
-				18D5DA0F260FC03E003B455C /* Extensions */,
 				18D5D9F3260FA4E0003B455C /* Classes */,
+				18E435152611F2180085AB13 /* Models */,
+				18647E9426133E4B00469DCA /* Services */,
+				18D5DA0F260FC03E003B455C /* Extensions */,
 				18D5D9BD260FA450003B455C /* AppDelegate.swift */,
 				18D5D9BF260FA450003B455C /* SceneDelegate.swift */,
 				18D5D9C3260FA450003B455C /* Main.storyboard */,
-				18D5D9C6260FA450003B455C /* Assets.xcassets */,
-				18D5D9C8260FA450003B455C /* LaunchScreen.storyboard */,
-				18D5D9CB260FA450003B455C /* Info.plist */,
 				18E4351B2611F34D0085AB13 /* hipo.json */,
+				18BBD3402616633300CF6759 /* Supporting Files */,
+				18BBD3412616635A00CF6759 /* Resources */,
 			);
 			path = HipoLabs;
 			sourceTree = "<group>";
@@ -165,23 +183,24 @@
 		18D5D9F3260FA4E0003B455C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				18D5DA06260FBB88003B455C /* Cells */,
 				18D5D9F4260FA4F4003B455C /* SplashScreenViewController.swift */,
 				18253FBA26127EB40003A4EC /* HomeViewInteractor.swift */,
 				18D5D9FC260FA517003B455C /* HomeViewController.swift */,
 				18D5DA01260FAD08003B455C /* DetailViewController.swift */,
+				1846B758261651C900C3BD1B /* DetailViewInteractor.swift */,
 				18BC6603261138710070046E /* AddMemberViewController.swift */,
 				18647EA52614AFE900469DCA /* GitHubViewController.swift */,
+				18D5DA06260FBB88003B455C /* Cell */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		18D5DA06260FBB88003B455C /* Cells */ = {
+		18D5DA06260FBB88003B455C /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				18D5DA07260FBBA7003B455C /* MembersCell.swift */,
 			);
-			path = Cells;
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		18D5DA0F260FC03E003B455C /* Extensions */ = {
@@ -336,6 +355,7 @@
 				18D5DA08260FBBA7003B455C /* MembersCell.swift in Sources */,
 				18647EA62614AFE900469DCA /* GitHubViewController.swift in Sources */,
 				18253FBB26127EB40003A4EC /* HomeViewInteractor.swift in Sources */,
+				1846B759261651C900C3BD1B /* DetailViewInteractor.swift in Sources */,
 				18D5D9C0260FA450003B455C /* SceneDelegate.swift in Sources */,
 				18BC6604261138710070046E /* AddMemberViewController.swift in Sources */,
 				18647E9E26133E6E00469DCA /* Service.swift in Sources */,

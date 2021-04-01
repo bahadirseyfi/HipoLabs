@@ -14,7 +14,7 @@ class HomeViewInteractor {
 
    // var members: MembersModel = Service.service.loadJSON(fileName: "hipo")!
     
-    func fetchModel(){
+    func fetchModel(completion: (()->Void)?){
        
         membersModel = Service.shared.loadJSON(fileName: "hipo")
         

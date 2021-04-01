@@ -17,8 +17,8 @@ class DetailViewController: UIViewController {
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var mapView: MKMapView!
     
-    private var currentMember: Member?
-    var coordinate: CLLocationCoordinate2D?
+ 
+    private var interactor: DetailViewInteractor = DetailViewInteractor()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,77 +28,48 @@ class DetailViewController: UIViewController {
         if #available(iOS 13.0, *) {
             self.overrideUserInterfaceStyle = .dark
         }
+        
     }
     
     
     private func redirectTo(){
+        
         self.view.endEditing(true)
         let viewController = GitHubViewController.instantiateViewController(with: "GitHubViewController")
-        if let githubName = currentMember?.github {
+        if let githubName = interactor.member?.github {
             viewController.initializer(github: githubName)
         }
-        
-      //  viewController.initialize(with: member)
         viewController.modalPresentationStyle = .fullScreen
         self.showDetailViewController(viewController, sender: nil)
     }
     
+    func initializer(with member: Member){
+        interactor.initialize(with: member)
+    }
+
     func setupUI(){
         
-        setupMap()
-        nameLabel.text = currentMember?.name
-        if let age = currentMember?.age {
+        interactor.setupMap(map: mapView)
+        
+        nameLabel.text = interactor.member?.name
+        if let age = interactor.member?.age {
             ageLabel.text = String(age)
         }
-        if let hipoYears = currentMember?.hipo?.years_in_hipo {
+        if let hipoYears = interactor.member?.hipo?.years_in_hipo {
             hipoYearsLabel.text = String(hipoYears)
         }
-        githubLabel.text = currentMember?.github
-        locationLabel.text = currentMember?.location
-    }
-    
-    func initialize(with member: Member){
-        self.currentMember = member
+        githubLabel.text = interactor.member?.github
+        locationLabel.text = interactor.member?.location
     }
     
     @IBAction func backButton(_ sender: UIButton) {
         self.dismiss(animated: true, completion: nil)
     }
+    
     @IBAction func githubBtnClicked(_ sender: UIButton) {
         redirectTo()
     }
-    
-    
-    func setupMap(){
-        
-        guard let cityName = currentMember?.location else { return }
-        let adress = cityName
-        
-        getCoordinateFrom(address: adress) { coordinate, error in
-            guard let coordinate = coordinate, error == nil else { return }
-            
-            DispatchQueue.main.async {
-                self.coordinate = coordinate
-                let initialLocation = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
-                self.mapView.centerToLocation(initialLocation)
-            }
-        }
-    }
-    func getCoordinateFrom(address: String, completion: @escaping(_ coordinate: CLLocationCoordinate2D?, _ error: Error?) -> () ) {
-        CLGeocoder().geocodeAddressString(address) { completion($0?.first?.location?.coordinate, $1) }
-    }
 
 }
-private extension MKMapView {
-  func centerToLocation(
-    _ location: CLLocation,
-    regionRadius: CLLocationDistance = 1000
-  ) {
-    let coordinateRegion = MKCoordinateRegion(
-      center: location.coordinate,
-      latitudinalMeters: regionRadius,
-      longitudinalMeters: regionRadius)
-    setRegion(coordinateRegion, animated: true)
-  }
-}
+
 

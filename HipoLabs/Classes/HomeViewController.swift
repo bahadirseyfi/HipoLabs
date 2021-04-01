@@ -13,14 +13,15 @@ class HomeViewController: UIViewController, AddMemberDelegate {
     
     func reload(member: Member) {
         interactor.membersModel?.members?.append(member)
-        self.loadData()
-    }
-    
-    func loadData(){
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        
     }
  
+ 
     // -------------------------------
+
     
     private var interactor: HomeViewInteractor = HomeViewInteractor()
     
@@ -29,18 +30,45 @@ class HomeViewController: UIViewController, AddMemberDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupUI()
         tableView.dataSource = self
         tableView.delegate = self
-        interactor.fetchModel()
+      
     }
+    
+    func setupUI(){
+        interactor.fetchModel {
+            self.tableView.reloadData()
+        }
+        
+    }
+    
     
     private func redirectTo(member: Member) {
         
         self.view.endEditing(true)
         let viewController = DetailViewController.instantiateViewController(with: "DetailViewController")
-        viewController.initialize(with: member)
+        viewController.initializer(with: member)
         viewController.modalPresentationStyle = .fullScreen
+        
         self.showDetailViewController(viewController, sender: nil)
+    }
+    
+    
+    @IBAction func sortBtnClicked(_ sender: UIButton) {
+        
+        let new = Member()
+        new.name = "bahadir"
+        new.age = 31
+        new.github = "bahadirseyfi"
+        new.location = "istanbul"
+        new.hipo?.position = "ios"
+        new.hipo?.years_in_hipo = 12
+        
+        interactor.membersModel?.members?.append(new)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
 }
@@ -48,11 +76,13 @@ class HomeViewController: UIViewController, AddMemberDelegate {
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-         return (interactor.membersModel?.members?.count)! // ! -------
+        guard let members = interactor.membersModel?.members else { return 0 }
+        return members.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MembersCell") as! MembersCell
+        
         let member = interactor.membersModel?.members![indexPath.row]
         cell.setupUI(for: member!) // ! ---------
             return cell

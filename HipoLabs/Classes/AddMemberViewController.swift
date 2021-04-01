@@ -30,21 +30,19 @@ class AddMemberViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         toNextTextfield()
-        hideKeyboard()
-
+        tapHideKeyboard()
+        
     }
     
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
-        
         let stepperValue = Int(sender.value)
         if stepperValue == 0 {
             yearsLabel.text = "Intern"
         } else {
             yearsLabel.text = stepperValue.description
         }
-     
     }
     
     @IBAction func backBtn(_ sender: UIButton) {
@@ -55,20 +53,13 @@ class AddMemberViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func addMmbrButton(_ sender: UIButton) {
         
-     //   let viewController = HomeViewController.instantiateViewController(with: "HomeViewController")
-        
-      //  interactor.fetchModel()
         let new = createMember()
-       // interactor.membersModel?.members?.append(new)
-       // print("YENİ SAYISIIII !!!", interactor.membersModel?.members![4].name)
-      
-        // TABLE VİEW RELOAD ETMEK !!!!!!
-         //   viewController.tableView.reloadData()
-    
-       
-        self.dismiss(animated: true) { [weak self] in
-            self?.delegate?.reload(member: new)
-        }
+        self.delegate?.reload(member: new)
+        self.dismiss(animated: true, completion: nil)
+        
+     //   self.dismiss(animated: true) { [weak self] in
+     //       self?.delegate?.reload(member: new)
+     //   }
         
     }
     func createMember()->Member{
@@ -83,9 +74,7 @@ class AddMemberViewController: UIViewController, UITextFieldDelegate {
         if let yearHipo = yearsLabel.text {
             createMem.hipo?.years_in_hipo = Int(yearHipo)
         }
-        
         createMem.location = locationTextField.text
-  
         createMem.github = githubTextField.text
         
        // createMem.hipo?.years_in_hipo =
@@ -94,11 +83,9 @@ class AddMemberViewController: UIViewController, UITextFieldDelegate {
     
     
     
-    func hideKeyboard(){
+    func tapHideKeyboard(){
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
-
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
-        
         let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
         view.addGestureRecognizer(tap)
     }
@@ -160,27 +147,6 @@ class AddMemberViewController: UIViewController, UITextFieldDelegate {
                 self.githubTextField.resignFirstResponder()
             }
         }
-    
-    
-    /*
-    func textFieldDidBeginEditing(_ textField: UITextField) {
-            self.animateViewMoving(up: true, moveValue: 100)
-    }
-    func textFieldDidEndEditing(_ textField: UITextField) {
-            self.animateViewMoving(up: false, moveValue: 100)
-    }
-
-    func animateViewMoving (up:Bool, moveValue :CGFloat){
-            let movementDuration:TimeInterval = 0.3
-            let movement:CGFloat = ( up ? -moveValue : moveValue)
-            UIView.beginAnimations( "animateView", context: nil)
-            UIView.setAnimationBeginsFromCurrentState(true)
-            UIView.setAnimationDuration(movementDuration )
-            self.view.frame = self.view.frame.offsetBy(dx: 0, dy: movement)
-            UIView.commitAnimations()
-        }
-    */
-    
 
 }
 

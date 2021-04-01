@@ -11,7 +11,12 @@ import Foundation
 class Service {
     
     static let shared: Service = Service()
-    init() {}
+    private init() {}
+    
+    
+    
+    // BACK THREAD'DE YAPMAM GEREKİYOR İŞLEMLERİ, YÜKLÜ BİR JSON DOSYASI GELİR İSE
+    // SORUN YAŞANMAMASI İÇİN!!!!!!!!
     
     func loadJSON(fileName: String) -> MembersModel? {
         
@@ -22,18 +27,21 @@ class Service {
         guard let data = try? Data(contentsOf: url) else  { return nil }
         let member = try? decoder.decode(MembersModel.self, from: data)
         
-        
-   /*     guard
-            let url = Bundle.main.url(forResource: fileName, withExtension: "json"),
-            let data = try? Data(contentsOf: url),
-            let member = try? decoder.decode(MembersModel.self, from: data)
-     
-            else {
-                 return nil
-        }
-   */
+    
         return member
     }
     
-    
+   /*
+    func loadAllMembers(success: (()->Void)?, failure: ((Error?)->Void)?) {
+        let fileName = "hipo"
+        let decoder = JSONDecoder()
+        guard let url = Bundle.main.url(forResource: fileName, withExtension: "json") else {
+            fatalError("\(fileName) isimli dosya bulunamadı")
+        }
+        guard let data = try? Data(contentsOf: url) else  { return }
+        let member = try? decoder.decode(MembersModel.self, from: data)
+        success?()
+
+    }, failure: fail)
+ */
 }
