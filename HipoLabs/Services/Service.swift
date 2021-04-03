@@ -12,9 +12,7 @@ class Service {
     
     static let shared: Service = Service()
     private init() {}
-    
-    
-    
+
     // BACK THREAD'DE YAPMAM GEREKİYOR İŞLEMLERİ, YÜKLÜ BİR JSON DOSYASI GELİR İSE
     // SORUN YAŞANMAMASI İÇİN!!!!!!!!
     
@@ -26,10 +24,13 @@ class Service {
         }
         guard let data = try? Data(contentsOf: url) else  { return nil }
         let member = try? decoder.decode(MembersModel.self, from: data)
-        
     
         return member
+        
     }
+    
+
+
     
    /*
     func loadAllMembers(success: (()->Void)?, failure: ((Error?)->Void)?) {

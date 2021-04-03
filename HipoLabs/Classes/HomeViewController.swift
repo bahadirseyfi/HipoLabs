@@ -7,21 +7,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, AddMemberDelegate {
-    
-    // PROTOKOL --------------------
-    
-    func reload(member: Member) {
-        interactor.membersModel?.members?.append(member)
-        DispatchQueue.main.async {
-            self.tableView.reloadData()
-        }
-        
-    }
- 
- 
-    // -------------------------------
-
+class HomeViewController: UIViewController {
     
     private var interactor: HomeViewInteractor = HomeViewInteractor()
     
@@ -40,10 +26,8 @@ class HomeViewController: UIViewController, AddMemberDelegate {
         interactor.fetchModel {
             self.tableView.reloadData()
         }
-        
     }
-    
-    
+
     private func redirectTo(member: Member) {
         
         self.view.endEditing(true)
@@ -53,7 +37,6 @@ class HomeViewController: UIViewController, AddMemberDelegate {
         
         self.showDetailViewController(viewController, sender: nil)
     }
-    
     
     @IBAction func sortBtnClicked(_ sender: UIButton) {
         
@@ -70,7 +53,6 @@ class HomeViewController: UIViewController, AddMemberDelegate {
             self.tableView.reloadData()
         }
     }
-    
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
@@ -79,31 +61,39 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
         guard let members = interactor.membersModel?.members else { return 0 }
         return members.count
     }
-    
+
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "MembersCell") as! MembersCell
         
         let member = interactor.membersModel?.members![indexPath.row]
         cell.setupUI(for: member!) // ! ---------
             return cell
-       
     }
+
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         60
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         guard let memberModel = interactor.membersModel else { return }
-        
-        //--------- ! -------
-        let memo = memberModel.members![indexPath.row]
-        redirectTo(member: memo)
-        
-   
+        guard let member = memberModel.members else { return }
+        let selected_member = member[indexPath.row]
+        redirectTo(member: selected_member)
     }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         1
     }
 
 }
 
+extension HomeViewController: AddMemberDelegate {
+    func reload(member: Member) {
+        interactor.membersModel?.members?.append(member)
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        
+    }
+}

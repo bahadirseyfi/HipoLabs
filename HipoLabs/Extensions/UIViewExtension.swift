@@ -40,39 +40,6 @@ extension UIView {
             layer.borderColor = newValue?.cgColor
         }
     }
-    
-    @IBInspectable
-    var shadowRadius: CGFloat {
-        get {
-            return layer.shadowRadius
-        }
-        set {
-            layer.shadowColor = UIColor.black.cgColor
-            layer.shadowOffset = CGSize(width: 0, height: 2)
-            layer.shadowOpacity = 0.4
-            layer.shadowRadius = newValue
-        }
-    }
-        var kTagActivityIndicatorView:Int{ 13934}
-        
-        func startActivityIndicator(style: UIActivityIndicatorView.Style = .medium) {
-            
-            let activity = UIActivityIndicatorView(style: style)
-            superview?.layoutIfNeeded()
-            activity.frame = CGRect(origin: self.center, size: CGSize(width: activity.bounds.size.width, height: activity.bounds.size.height))
-            activity.tag = kTagActivityIndicatorView
-            activity.hidesWhenStopped = true
-            activity.startAnimating()
-            self.addSubview(activity)
-        }
-        
-        func stopActivityIndicator() {
-            
-            if let activity = self.viewWithTag(kTagActivityIndicatorView) {
-                activity.removeFromSuperview()
-            }
-        }
-    
 }
 
 

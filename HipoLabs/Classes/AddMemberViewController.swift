@@ -17,7 +17,7 @@ class AddMemberViewController: UIViewController, UITextFieldDelegate {
     
     private var interactor: HomeViewInteractor = HomeViewInteractor()
     
-    weak var delegate: AddMemberDelegate?
+    var delegate: AddMemberDelegate?
 
     // Mark: - Properties
     @IBOutlet weak var nameTextField: UITextField!
@@ -50,18 +50,20 @@ class AddMemberViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    // I want it to add me when I press the button and return to the home page.  ( go -> HomeViewController)
     
     @IBAction func addMmbrButton(_ sender: UIButton) {
         
         let new = createMember()
-        self.delegate?.reload(member: new)
-        self.dismiss(animated: true, completion: nil)
+     //  self.delegate?.reload(member: new)
+     //   self.dismiss(animated: true, completion: nil)
         
-     //   self.dismiss(animated: true) { [weak self] in
-     //       self?.delegate?.reload(member: new)
-     //   }
+        self.dismiss(animated: true) { //[weak self] in
+            self.delegate?.reload(member: new)
+        }
         
     }
+    
     func createMember()->Member{
         let createMem = Member()
         
@@ -82,6 +84,9 @@ class AddMemberViewController: UIViewController, UITextFieldDelegate {
     }
     
     
+    
+    
+    // Mark: - Helpers (TextField & Keyboard)
     
     func tapHideKeyboard(){
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);

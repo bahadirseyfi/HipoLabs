@@ -112,7 +112,6 @@
 			isa = PBXGroup;
 			children = (
 				18D5D9C8260FA450003B455C /* LaunchScreen.storyboard */,
-				18D5D9CB260FA450003B455C /* Info.plist */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -156,6 +155,7 @@
 				18D5D9BF260FA450003B455C /* SceneDelegate.swift */,
 				18D5D9C3260FA450003B455C /* Main.storyboard */,
 				18E4351B2611F34D0085AB13 /* hipo.json */,
+				18D5D9CB260FA450003B455C /* Info.plist */,
 				18BBD3402616633300CF6759 /* Supporting Files */,
 				18BBD3412616635A00CF6759 /* Resources */,
 			);
