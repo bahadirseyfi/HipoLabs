@@ -29,20 +29,16 @@ class Service {
         
     }
     
-
-
     
-   /*
-    func loadAllMembers(success: (()->Void)?, failure: ((Error?)->Void)?) {
-        let fileName = "hipo"
+    func loadJSONArray(fileName: String) -> MembersModel? {
+        
         let decoder = JSONDecoder()
         guard let url = Bundle.main.url(forResource: fileName, withExtension: "json") else {
             fatalError("\(fileName) isimli dosya bulunamadı")
         }
-        guard let data = try? Data(contentsOf: url) else  { return }
-        let member = try? decoder.decode(MembersModel.self, from: data)
-        success?()
-
-    }, failure: fail)
- */
+        guard let data = try? Data(contentsOf: url) else  { return nil }
+        let membersModel = try? decoder.decode(MembersModel.self, from: data)
+        return membersModel
+        
+    }
 }

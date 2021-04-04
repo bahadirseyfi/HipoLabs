@@ -11,8 +11,8 @@ import WebKit
 class GitHubViewController: UIViewController, WKNavigationDelegate, WKUIDelegate {
 
     @IBOutlet weak var webView: WKWebView!
-    var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var topLogoImage: UIImageView!
+    var activityIndicator: UIActivityIndicatorView!
     
     var githubName: String = ""
     var url: String = ""
@@ -24,10 +24,6 @@ class GitHubViewController: UIViewController, WKNavigationDelegate, WKUIDelegate
         webView.uiDelegate = self
         loadGitHub()
     }
-    override func viewWillAppear(_ animated: Bool) {
-     // activityIndicatorControl()
-    }
-    
     
     func initializer(github: String) {
         self.githubName = github
@@ -37,7 +33,7 @@ class GitHubViewController: UIViewController, WKNavigationDelegate, WKUIDelegate
         self.dismiss(animated: true, completion: nil)
     }
     
-    func loadGitHub(){
+   private func loadGitHub(){
         topLogoImage.image = UIImage(named: "logohipo")
         url = "https://github.com/\(githubName)"
         setupUI(url: url)
@@ -56,7 +52,7 @@ class GitHubViewController: UIViewController, WKNavigationDelegate, WKUIDelegate
     }
     
     
-    func setupUI(url: String){
+   private func setupUI(url: String){
         
         activityIndicator = UIActivityIndicatorView()
         activityIndicator.center = self.view.center
@@ -71,7 +67,7 @@ class GitHubViewController: UIViewController, WKNavigationDelegate, WKUIDelegate
         self.webView.load(URLRequest(url: url!))
     }
     
-    func showActivityIndicator(show: Bool) {
+   private func showActivityIndicator(show: Bool) {
           if show {
               activityIndicator.startAnimating()
           } else {

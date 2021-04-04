@@ -7,18 +7,29 @@
 
 import Foundation
 
-
 class HomeViewInteractor {
-    
-    var membersModel: MembersModel?
 
-   // var members: MembersModel = Service.service.loadJSON(fileName: "hipo")!
-    
-    func fetchModel(completion: (()->Void)?){
+    private var membersModel: MembersModel?
+    var members: [Member] = []
+    var filtered_members: [Member] = []
+
+    func membersArray(completion: (()->Void)?){
         membersModel = Service.shared.loadJSON(fileName: "hipo")
+        if let fetchMember = membersModel?.members {
+            self.members = fetchMember
+            self.filtered_members = members
+        }
     }
-     
-    func sortModel(){
+    
+    func filterArray(by text: String?, completion: (()->Void)?){
         
+        guard let text = text?.lowercased(), !text.isEmpty else {
+            filtered_members = members
+            completion?()
+            return
+        }
+        filtered_members = members.filter({ $0.name?.lowercased().contains(text) ?? false})
+        completion?()
     }
+    
 }

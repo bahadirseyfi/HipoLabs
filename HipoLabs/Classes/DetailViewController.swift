@@ -24,13 +24,10 @@ class DetailViewController: UIViewController {
         super.viewDidLoad()
 
         setupUI()
-        
         if #available(iOS 13.0, *) {
             self.overrideUserInterfaceStyle = .dark
         }
-        
     }
-    
     
     private func redirectTo(){
         
@@ -47,10 +44,9 @@ class DetailViewController: UIViewController {
         interactor.initialize(with: member)
     }
 
-    func setupUI(){
+   private func setupUI(){
         
         interactor.setupMap(map: mapView)
-        
         nameLabel.text = interactor.member?.name
         if let age = interactor.member?.age {
             ageLabel.text = String(age)
@@ -63,7 +59,10 @@ class DetailViewController: UIViewController {
     }
     
     @IBAction func backButton(_ sender: UIButton) {
-        self.dismiss(animated: true, completion: nil)
+        let viewController = HomeViewController.instantiateViewController(with: "HomeViewController")
+        viewController.searchTextField?.text = nil
+        viewController.modalPresentationStyle = .fullScreen
+        self.showDetailViewController(viewController, sender: nil)
     }
     
     @IBAction func githubBtnClicked(_ sender: UIButton) {

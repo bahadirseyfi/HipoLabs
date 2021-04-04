@@ -7,17 +7,14 @@
 
 import UIKit
 
-protocol AddMemberDelegate: AnyObject {
-    func reload(member: Member)
-}
 
-
-class AddMemberViewController: UIViewController, UITextFieldDelegate {
+class AddMemberViewController: UIViewController, UITextFieldDelegate, AddNewMemberProtocol {
     
+    func addMember()->Member {
+        return createMember()
+    }
     
     private var interactor: HomeViewInteractor = HomeViewInteractor()
-    
-    var delegate: AddMemberDelegate?
 
     // Mark: - Properties
     @IBOutlet weak var nameTextField: UITextField!
@@ -25,8 +22,7 @@ class AddMemberViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var locationTextField: UITextField!
     @IBOutlet weak var ageTextField: UITextField!
     @IBOutlet weak var githubTextField: UITextField!
-    
-    @IBOutlet weak var yearsLabel: UILabel!
+    @IBOutlet weak var yearsHipo: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,9 +35,9 @@ class AddMemberViewController: UIViewController, UITextFieldDelegate {
     @IBAction func stepperValueChanged(_ sender: UIStepper) {
         let stepperValue = Int(sender.value)
         if stepperValue == 0 {
-            yearsLabel.text = "Intern"
+            yearsHipo.text = "Intern"
         } else {
-            yearsLabel.text = stepperValue.description
+            yearsHipo.text = stepperValue.description
         }
     }
     
@@ -49,42 +45,33 @@ class AddMemberViewController: UIViewController, UITextFieldDelegate {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-    // I want it to add me when I press the button and return to the home page.  ( go -> HomeViewController)
-    
     @IBAction func addMmbrButton(_ sender: UIButton) {
         
-        let new = createMember()
-     //  self.delegate?.reload(member: new)
-     //   self.dismiss(animated: true, completion: nil)
-        
-        self.dismiss(animated: true) { //[weak self] in
-            self.delegate?.reload(member: new)
-        }
-        
+        let viewController = HomeViewController.instantiateViewController(with: "HomeViewController")
+        viewController.delegate = self
+        viewController.modalPresentationStyle = .fullScreen
+        self.showDetailViewController(viewController, sender: nil)
+
     }
     
     func createMember()->Member{
-        let createMem = Member()
+        let createMember = Member()
         
         if let nameLabel = nameTextField.text, let surnameLabel = surnameTextField.text {
-            createMem.name = nameLabel + " " + surnameLabel
+            createMember.name = nameLabel + " " + surnameLabel
         }
         if let age = ageTextField.text {
-            createMem.age = Int(age)
+            createMember.age = Int(age)
         }
-        if let yearHipo = yearsLabel.text {
-            createMem.hipo?.years_in_hipo = Int(yearHipo)
+        if let yearHipo = yearsHipo.text {
+            createMember.hipo?.years_in_hipo = Int(yearHipo)
         }
-        createMem.location = locationTextField.text
-        createMem.github = githubTextField.text
+        createMember.location = locationTextField.text
+        createMember.github = githubTextField.text
         
-       // createMem.hipo?.years_in_hipo =
-        return createMem
+        return createMember
     }
-    
-    
-    
+
     
     // Mark: - Helpers (TextField & Keyboard)
     
