@@ -23,11 +23,11 @@ Service:
 ![searchipo](https://user-images.githubusercontent.com/57216650/113637717-f6c33a00-967d-11eb-89bf-bc2b2d4148bd.gif)
 ![githubhipo](https://user-images.githubusercontent.com/57216650/113637713-f5920d00-967d-11eb-9732-686b0a7abac5.gif)
 
-## Installation
+## Install
 For hipo.json file download:
-```npm
-https://www.dropbox.com/sh/lsyoo0jq9me8ecu/AABcXBa2h7_72HmeCqT4fee9a?dl=0
-```
+
+[hipo.json](https://www.dropbox.com/sh/lsyoo0jq9me8ecu/AABcXBa2h7_72HmeCqT4fee9a?dl=0)
+
 ## Frameworks
 - Foundation & UIKit
 - MapKit
