@@ -1,6 +1,6 @@
 # HipoLabs Assignment
 
-##Description
+## Description
 This app, which is designed independently with the UI Layer, is an entry level detail application provided by Hipo Labs.
 
 Home Page:
@@ -16,7 +16,7 @@ Service:
 - Created models Codable models
 - Reading from file with json extension
 
-##Screenshots
+## Screenshots
 
 ![splashhipo](https://user-images.githubusercontent.com/57216650/113637685-e4e19700-967d-11eb-99b6-ddc9e3e14b8e.gif)
 ![homehipo](https://user-images.githubusercontent.com/57216650/113637705-ef9c2c00-967d-11eb-9284-1e375a1e698f.gif)
@@ -28,7 +28,7 @@ For hipo.json file download:
 ```npm
 https://www.dropbox.com/sh/lsyoo0jq9me8ecu/AABcXBa2h7_72HmeCqT4fee9a?dl=0
 ```
-##Frameworks
+## Frameworks
 - Foundation & UIKit
 - MapKit
 - WKWebView
