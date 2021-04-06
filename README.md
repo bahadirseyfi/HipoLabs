@@ -11,6 +11,7 @@ Detail Page:
 - Member information is visible.
 - Location information is transferred to the map and displayed dynamically.
 - Access to the site with WebView with the given GitHub username(& hipolabs.com)
+- Activity Indicator
 
 Service: 
 - Created models Codable models
