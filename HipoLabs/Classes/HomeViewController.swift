@@ -11,14 +11,12 @@ protocol AddNewMemberProtocol {
     func addMember()->Member
 }
 
-
 class HomeViewController: UIViewController {
     
     private var interactor: HomeViewInteractor = HomeViewInteractor()
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchTextField: UITextField!
-    
     
     var delegate: AddNewMemberProtocol?
     
@@ -31,7 +29,6 @@ class HomeViewController: UIViewController {
     }
     
    private func setupUI(){
-    
         searchTextField.addTarget(self, action: #selector(textFieldDidChanged(_:)), for: .editingChanged)
         interactor.membersArray {
             self.tableView.reloadData()
@@ -56,38 +53,17 @@ class HomeViewController: UIViewController {
     
     @IBAction func sortBtnClicked(_ sender: UIButton) {
 
-        
-    }
-    func tapHideKeyboard(){
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(sender:)), name: UIResponder.keyboardWillShowNotification, object: nil);
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(sender:)), name: UIResponder.keyboardWillHideNotification, object: nil);
-        let tap = UITapGestureRecognizer(target: self, action: #selector(UIInputViewController.dismissKeyboard))
-        view.addGestureRecognizer(tap)
-    }
-    @objc func dismissKeyboard() {
-        view.endEditing(true)
-    }
-    
-    @objc func keyboardWillShow(sender: NSNotification) {
-         self.view.frame.origin.y = -170
-    }
-
-    @objc func keyboardWillHide(sender: NSNotification) {
-         self.view.frame.origin.y = 0
     }
     
 }
 
 extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     
-  
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return interactor.filtered_members.count
  }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "MembersCell") as! MembersCell
         let member = interactor.filtered_members[indexPath.row]
         cell.setupUI(for: member)
@@ -99,7 +75,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         let selected_member = interactor.filtered_members[indexPath.row]
         redirectTo(member: selected_member)
     }
@@ -111,7 +86,6 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource{
 
 }
 extension HomeViewController : UITextFieldDelegate {
-    
     
     @objc func textFieldDidChanged(_ sender: UITextField) {
         interactor.filterArray(by: searchTextField?.text, completion: {

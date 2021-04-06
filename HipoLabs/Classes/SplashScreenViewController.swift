@@ -39,7 +39,7 @@ class SplashScreenViewController: UIViewController {
     }
     
     private func redirectToHome() {
-        DispatchQueue.main.asyncAfter(deadline: .now(), execute: {
+        DispatchQueue.main.asyncAfter(deadline: .now()+2, execute: {
             let vc = HomeViewController.instantiateViewController(with: "HomeViewController")
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true, completion: nil)
